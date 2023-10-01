@@ -2,10 +2,10 @@ namespace OpenAPIDemo.Worker
 {
     public class Worker : BackgroundService
     {
-        private readonly CatFactsClient _catFactsClient;
+        private readonly ICatFactsClient _catFactsClient;
         private readonly ILogger<Worker> _logger;
 
-        public Worker(ILogger<Worker> logger, CatFactsClient catFactsClient)
+        public Worker(ILogger<Worker> logger, ICatFactsClient catFactsClient)
         {
             _catFactsClient = catFactsClient;
             _logger = logger;

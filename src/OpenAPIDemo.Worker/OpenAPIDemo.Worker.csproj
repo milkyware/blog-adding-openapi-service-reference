@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <OpenApiReference Include="OpenAPI\CatFacts.yml" CodeGenerator="NSwagCSharp" Options="/UseBaseUrl:false" />
+    <OpenApiReference Include="OpenAPI\CatFacts.yml" CodeGenerator="NSwagCSharp" Options="/UseBaseUrl:false /GenerateClientInterfaces:true" />
   </ItemGroup>
 
   <ItemGroup>
