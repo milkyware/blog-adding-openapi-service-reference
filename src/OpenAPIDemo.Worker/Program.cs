@@ -1,5 +1,7 @@
 using Microsoft.Extensions.Options;
 using OpenAPIDemo.Worker;
+using Polly;
+using Polly.Extensions.Http;
 
 IHost host = Host.CreateDefaultBuilder(args)
     .ConfigureServices(services =>
@@ -11,7 +13,10 @@ IHost host = Host.CreateDefaultBuilder(args)
             var options = sp.GetRequiredService<IOptions<MyOptions>>();
 
             client.BaseAddress = options.Value.CatFactsBaseUrl;
-        });
+        })
+        .AddPolicyHandler((sp, request) => HttpPolicyExtensions
+            .HandleTransientHttpError()
+            .WaitAndRetryAsync(3, retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt))));
         services.AddHostedService<Worker>();
     })
     .Build();
