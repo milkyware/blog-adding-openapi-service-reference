@@ -5,7 +5,7 @@ IHost host = Host.CreateDefaultBuilder(args)
     .ConfigureServices(services =>
     {
         services.AddOptions<MyOptions>()
-            .Configure<IConfiguration>((options, configuration) => configuration.GetSection("Myoptions").Bind(options));
+            .Configure<IConfiguration>((options, configuration) => configuration.GetSection("MyOptions").Bind(options));
         services.AddHttpClient<ICatFactsClient, CatFactsClient>((sp, client) =>
         {
             var options = sp.GetRequiredService<IOptions<MyOptions>>();
