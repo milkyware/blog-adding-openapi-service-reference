@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Worker">
+﻿<Project Sdk="Microsoft.NET.Sdk.Worker">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -8,11 +8,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="OpenAPI\CatFacts.json" />
+    <None Remove="OpenAPI\CatFacts.yml" />
   </ItemGroup>
 
   <ItemGroup>
-    <OpenApiReference Include="OpenAPI\CatFacts.json" CodeGenerator="NSwagCSharp" Options="/UseBaseUrl:false" />
+    <OpenApiReference Include="OpenAPI\CatFacts.yml" CodeGenerator="NSwagCSharp" Options="/UseBaseUrl:false" />
   </ItemGroup>
 
   <ItemGroup>
